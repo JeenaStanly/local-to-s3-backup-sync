@@ -24,6 +24,7 @@ Firstly, you download the AWS CLI for Windows.
 
 After downloading, open your system Command Prompt by typing “CMD” on your Windows search bar, selecting “Open,” and running the following command: “aws configure.” If you have installed the AWS CLI correctly, you should have the following display where you input your AWS Access Key ID, AWS Secret Access Key, default region, and default output format. 
 
+![image](https://github.com/user-attachments/assets/83d27e6b-392b-4153-9f4b-de1b67d2d788)
 
 ### Step 2: Create an S3 bucket
 
