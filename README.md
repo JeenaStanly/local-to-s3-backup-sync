@@ -46,23 +46,29 @@ ACL disabled: When the ACL option is enabled, only policies will be able to enab
 Select ACL is disabled, so your bucket is not available to the public.
 
 Scroll down on the creation page and select “create bucket." Now you have successfully created an S3 bucket.
+![image](https://github.com/user-attachments/assets/03496d04-7464-4c39-9e47-f5c4ec2a8305)
 
 
 Now, navigate to the “Command Prompt” on your system and run “aws s3 ls.” If you are in the right account, this command will display a list of S3 buckets in the AWS account.
 
+![image](https://github.com/user-attachments/assets/320299ee-7124-407c-bd39-ab7cfa5b1b5c)
 
 ### Step 3: Create a “Task” on Task Scheduler
 
 Go to the Windows search bar and type in “Task Scheduler." select "Open,” and you will see the below display. Select "Create Task."
 
+![image](https://github.com/user-attachments/assets/461cd2e8-3f92-4aec-9fe0-70d8e0a8f3c6)
 
 In the Task window, enter a task name.
 
+![image](https://github.com/user-attachments/assets/0901e372-0bfe-4943-9906-a54a8216a4d2)
 
 Navigate right to the “Triggers” section and click on "New."This is where we choose how frequently we want this trigger to automate this sync, for example, daily, weekly, or monthly.
 
+![image](https://github.com/user-attachments/assets/fe83e709-ba6a-4126-8e4b-0e3dc7afea5d)
 
 Navigate right again to the “Actions” tab and select “New.”
+![image](https://github.com/user-attachments/assets/2578d152-19e4-453a-afa6-cbdcf94d1163)
 
 
 You will see the below display asking for a program/script, This is where we add our batch script that will run the s3 sync command.
@@ -73,17 +79,21 @@ A batch script is a text file containing certain commands that are executed in s
 
 To create one for this project, Open up a blank notepad on your system and enter the following command.
 
+```batch
 aws s3 sync C:\Users\YourLocalDirectory s3://s3BucketName
-This command will use the S3 cli command to sync the local directory folder to this particular S3 bucket. In order to make this a batch script, we click on “save as” and add “.bat” at the end after adding the name. This automatically turns this Notepad editor file into an executable batch script.
+```
+This command will use the S3 cli command to sync the local directory folder to this particular S3 bucket. In order to make this a batch script, we click on “save as” and add “.bat” at the end after adding the name. This automatically turns this Notepad editor file into an executable batch script.(for more detailed and optimized batch script read the file s3sync.bat)
 
 
 Click on “Browse” on the Actions tab and add this batch script as an action. That is, whenever the specified time in the trigger approaches, the script runs immediately and updates the S3 bucket with ONLY newly added file(s) in the system folder, according to the triggers and actions.
 
+![image](https://github.com/user-attachments/assets/7f2dcda4-8473-4197-ad7b-fef9a30ce9f7)
 
 Navigate right to settings and check the box that says “Run task as soon as possible after a scheduled start is missed.” This will make sure that if an action was missed for whatever reason, for example, a dead battery. It would automatically start whenever your laptop comes on.
 
 
 On the Task Scheduler homepage, select the task you just created and click “Run.”
+![image](https://github.com/user-attachments/assets/74dbc873-4e81-4057-bc57-da8882c6114f)
 
 
 If everything was done successfully, immediately after clicking "Run,” you will see a similar display to the one below, where the files begin to get uploaded to the specified S3 bucket.
