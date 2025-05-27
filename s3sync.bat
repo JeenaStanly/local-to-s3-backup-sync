@@ -1,9 +1,9 @@
 @echo off
 :: Set AWS S3 bucket name
-set BUCKET_NAME=s3://new-bucketfromcli --region us-east-1
+set BUCKET_NAME=s3://[Bucket_name] --region us-east-1
 
 :: Set local directory to sync
-set LOCAL_DIR=C:\Users\Jeena\Desktop\S3_Sync
+set LOCAL_DIR=C:\[Path_to_your_directory]
 
 :: Set log file path (using timestamped logs)
 set LOG_DIR=C:\logs\s3synclogs
